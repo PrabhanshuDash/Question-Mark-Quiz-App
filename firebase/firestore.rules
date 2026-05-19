@@ -1,0 +1,73 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /email/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
+
+    match /users/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /ScienceQuestions/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /ScienceQuestions/{parent}/option1/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/option1/{document} {
+      allow read: if true;
+    }
+
+
+    match /ScienceQuestions/{parent}/option2/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/option2/{document} {
+      allow read: if true;
+    }
+
+
+    match /ScienceQuestions/{parent}/option3/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/option3/{document} {
+      allow read: if true;
+    }
+
+
+    match /ScienceQuestions/{parent}/option4/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/option4/{document} {
+      allow read: if true;
+    }
+
+  }
+}
